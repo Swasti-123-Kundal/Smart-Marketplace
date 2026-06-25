@@ -15,10 +15,13 @@ const router = express.Router();
 
 // Public
 router.get('/', getProjects);
-router.get('/:id', getProject);
 
 // Private (Client)
 router.get('/user/my', protect, authorize('client'), getMyProjects);
+
+// Public
+router.get('/:id', getProject);
+
 router.post('/', protect, authorize('client'), projectValidator, createProject);
 router.put('/:id', protect, authorize('client'), updateProject);
 router.delete('/:id', protect, authorize('client'), deleteProject);
